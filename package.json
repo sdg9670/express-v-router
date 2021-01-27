@@ -1,0 +1,64 @@
+{
+  "name": "express-v-router",
+  "version": "1.0.0",
+  "description": "It is a router that can be versioned using url path in express.",
+  "author": "sdg9670 <sdg9670@naver.com>",
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdg9670/express-v-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sdg9670/express-v-router/issues",
+    "email": "sdg9670@naver.com"
+  },
+  "homepage": "https://github.com/sdg9670/express-v-router",
+  "keywords": [
+    "express",
+    "version",
+    "versioning",
+    "router",
+    "api",
+    "server"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run build:typescript && npm run build:babel",
+    "build:typescript": "tsc",
+    "build:babel": "babel lib --out-dir dist --extensions \".ts,.tsx\" --source-maps inline --copy-files",
+    "test": "npm run test:lint && npm run test:lib && npm run test:express",
+    "test:lib": "mocha -r ts-node/register test/lib/**/*.spec.ts",
+    "test:express": "mocha -r ts-node/register test/express/**/*.spec.ts",
+    "test:lint": "eslint --fix"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/chai": "^4.2.14",
+    "@types/express": "^4.17.11",
+    "@types/mocha": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

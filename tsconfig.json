@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["lib/*"]
+    },
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "declaration": true
+  },
+  "include": ["lib/**/*"]
+}

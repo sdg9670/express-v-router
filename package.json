@@ -1,6 +1,6 @@
 {
   "name": "express-v-router",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "It is a router that can be versioned using url path in express.",
   "author": "sdg9670 <sdg9670@naver.com>",
   "contributors": [],
@@ -28,9 +28,10 @@
     "build": "npm run build:typescript && npm run build:babel",
     "build:typescript": "tsc",
     "build:babel": "babel lib --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "test": "npm run test:lint && npm run test:lib && npm run test:express",
+    "test": "npm run build && npm run test:lint && npm run test:lib && npm run test:express && npm run test:dist",
     "test:lib": "mocha -r ts-node/register test/lib/**/*.spec.ts",
     "test:express": "mocha -r ts-node/register test/express/**/*.spec.ts",
+    "test:dist": "mocha -r ts-node/register test/dist/**/*.spec.ts",
     "test:lint": "eslint --fix"
   },
   "devDependencies": {

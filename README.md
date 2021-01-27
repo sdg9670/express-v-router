@@ -4,9 +4,9 @@ It is a router that can be versioned using url path in express.
 
 # Docs
 
-- [Installation](#Installation)
-- [Usage Rules](#Usage%20Rules)
-- [API](#Api)
+- [Installation](#installation)
+- [Usage Rules](#usage-rules)
+- [API](#api)
 
 # Installation
 

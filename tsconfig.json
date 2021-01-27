@@ -10,7 +10,9 @@
     },
     "resolveJsonModule": true,
     "noImplicitAny": true,
-    "declaration": true
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true
   },
   "include": ["lib/**/*"]
 }

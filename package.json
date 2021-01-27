@@ -27,7 +27,7 @@
   "scripts": {
     "build": "npm run build:typescript && npm run build:babel",
     "build:typescript": "tsc",
-    "build:babel": "babel lib --out-dir dist --extensions \".ts,.tsx\" --source-maps inline --copy-files",
+    "build:babel": "babel lib --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "test": "npm run test:lint && npm run test:lib && npm run test:express",
     "test:lib": "mocha -r ts-node/register test/lib/**/*.spec.ts",
     "test:express": "mocha -r ts-node/register test/express/**/*.spec.ts",

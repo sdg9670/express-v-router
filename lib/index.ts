@@ -1,3 +1,3 @@
 import VersioningRouter from './versioning-router';
 
-module.exports = VersioningRouter;
+export default VersioningRouter;

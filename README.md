@@ -46,7 +46,7 @@ npm install express-v-router
 - If you are not registered with that version and are registered with a subversion, use the most recent version of the subversion. And if multiple versions with the same name are registered, use the latest version below that version.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.use({ name: 'filter', version: '1.0.0' }, (req, res, next) => {
@@ -98,7 +98,7 @@ npm install express-v-router
   It's like `router.use()` in express. It is a middleware that only works with this version or higher.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.use(
@@ -120,7 +120,7 @@ npm install express-v-router
   It's like `router.use()` in express. Unlike use(), it is a middleware that operates only in that version. If the router has the same name, the higher version will work before the lower version.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.useOnly(
@@ -141,7 +141,7 @@ npm install express-v-router
   It's like `router.Method()` in express. It is a method action that only works with this version or higher.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.add(
@@ -157,7 +157,7 @@ npm install express-v-router
   It's like `router.Method()` in express. it is a method action that operates only in that version.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.addOnly(
@@ -173,7 +173,7 @@ npm install express-v-router
   Returns the information registered with the router.
 
   ```javascript
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
   vRouter.addOnly(
@@ -234,7 +234,7 @@ npm install express-v-router
 
   ```javascript
   const express = require('express');
-  const VersioningRouter = require('express-v-router');
+  const VersioningRouter = require('express-v-router').default;
 
   const vRouter = new VersioningRouter();
 

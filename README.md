@@ -5,6 +5,7 @@ It is a router that can be versioned using url path in express.
 # Docs
 
 - [Installation](#installation)
+- [Example](#example)
 - [Usage Rules](#usage-rules)
 - [API](#api)
 
@@ -12,6 +13,61 @@ It is a router that can be versioned using url path in express.
 
 ```bash
 npm install express-v-router
+```
+
+# Example
+
+```javascript
+// ES6
+// import VersioningRouter from ''express-v-router';
+const VersioningRouter = require('express-v-router').default;
+const express = require('express');
+const vRouter = new VersioningRouter();
+
+vRouter.use({ name: 'auth', version: '1.0.0' }, (req, res, next) => {
+  next();
+});
+
+vRouter.use({ name: 'auth', version: '2.0.5' }, (req, res, next) => {
+  next();
+});
+
+vRouter.add(
+  '/name',
+  'get',
+  { name: 'getName', version: '1.0.0' },
+  (req, res, next) => {
+    res.json({ name: 'Sim' });
+  }
+);
+
+vRouter.add(
+  '/name',
+  'get',
+  { name: 'getName', version: '2.0.6' },
+  (req, res, next) => {
+    res.json({ name: 'Mark' });
+  }
+);
+
+const app = express();
+
+app.use(vRouter.getRouter());
+
+app.listen(3000, () => {
+  console.log(`Example app listening at http://localhost:3000`);
+});
+
+/*
+  - Request: http://localhost:3000/v1-0-0/name
+  - Result: {"name":"Sim"}
+
+  - Request: http://localhost:3000/v2-0-5/name
+  - Result: {"name":"Sim"}
+
+  - Request: http://localhost:3000/v2-0-6/name
+  - Result: {"name":"Mark"}
+*/
 ```
 
 # Usage Rules

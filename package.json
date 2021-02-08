@@ -1,6 +1,6 @@
 {
   "name": "express-v-router",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "It is a router that can be versioned using url path in express.",
   "author": "sdg9670 <sdg9670@naver.com>",
   "contributors": [],
@@ -33,7 +33,7 @@
     "test:express": "mocha -r ts-node/register test/express/**/*.spec.ts",
     "test:dist": "mocha -r ts-node/register test/dist/**/*.spec.ts",
     "test:lint": "eslint --fix",
-    "prepublishOnly": "npm run build"
+    "install": "npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

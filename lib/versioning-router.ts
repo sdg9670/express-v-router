@@ -49,82 +49,42 @@ export default class VersioningRouter {
     return router;
   }
 
-  public use(options: RoutingOptions, ...handlers: RequestHandler[]): void;
   public use(
     routePath: string,
     options: RoutingOptions,
     ...handlers: RequestHandler[]
-  ): void;
-  public use(
-    optionsOrRoutePath: RoutingOptions | string,
-    handlersOrOptions: any,
-    handlers?: any
   ): void {
-    let options: null | RoutingOptions = null;
-    let routePath: null | string = null;
     let tmpHandlers: RequestHandler[] = [];
 
-    if (typeof optionsOrRoutePath === 'object') {
-      options = optionsOrRoutePath as RoutingOptions;
-      tmpHandlers.push(handlersOrOptions);
-      if (handlers && handlers.length > 0) {
-        if (typeof handlers === 'function') tmpHandlers.push(handlers);
-        else tmpHandlers.push(...handlers);
-      }
-    } else {
-      routePath = optionsOrRoutePath as string;
-      options = handlersOrOptions as RoutingOptions;
-      if (handlers && handlers.length > 0) {
-        if (typeof handlers === 'function') tmpHandlers.push(handlers);
-        else tmpHandlers = handlers;
-      }
+    if (handlers && handlers.length > 0) {
+      if (typeof handlers === 'function') tmpHandlers.push(handlers);
+      else tmpHandlers = handlers;
     }
 
     if (!this.isExistsVersion(options.version))
       this.addVersionRouter(options.version);
 
-    if (routePath)
-      this.addRouting({ routePath, ...options, handlers: tmpHandlers });
-    else this.addRouting({ ...options, handlers: tmpHandlers });
+    this.addRouting({ routePath, ...options, handlers: tmpHandlers });
   }
 
-  public useOnly(options: RoutingOptions, ...handlers: RequestHandler[]): void;
   public useOnly(
     routePath: string,
     options: RoutingOptions,
     ...handlers: RequestHandler[]
-  ): void;
-  public useOnly(
-    optionsOrRoutePath: RoutingOptions | string,
-    handlersOrOptions: any,
-    handlers?: any
   ): void {
-    let options: null | RoutingOptions = null;
-    let routePath: null | string = null;
     let tmpHandlers: RequestHandler[] = [];
 
-    if (typeof optionsOrRoutePath === 'object') {
-      options = optionsOrRoutePath as RoutingOptions;
-      tmpHandlers.push(handlersOrOptions);
-      if (handlers && handlers.length > 0) {
-        if (typeof handlers === 'function') tmpHandlers.push(handlers);
-        else tmpHandlers.push(...handlers);
-      }
-    } else {
-      routePath = optionsOrRoutePath as string;
-      options = handlersOrOptions as RoutingOptions;
-      if (handlers && handlers.length > 0) {
-        if (typeof handlers === 'function') tmpHandlers.push(handlers);
-        else tmpHandlers = handlers;
-      }
+    routePath = routePath as string;
+    options = options as RoutingOptions;
+    if (handlers && handlers.length > 0) {
+      if (typeof handlers === 'function') tmpHandlers.push(handlers);
+      else tmpHandlers = handlers;
     }
 
     if (!this.isExistsVersion(options.version))
       this.addVersionRouter(options.version);
 
-    if (routePath)
-      this.addRouting({ routePath, ...options, handlers: tmpHandlers }, true);
-    else this.addRouting({ ...options, handlers: tmpHandlers }, true);
+    this.addRouting({ routePath, ...options, handlers: tmpHandlers }, true);
   }
 
   public add(

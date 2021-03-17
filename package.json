@@ -1,6 +1,6 @@
 {
   "name": "express-v-router",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "It is a router that can be versioned using url path in express.",
   "author": "sdg9670 <sdg9670@naver.com>",
   "contributors": [],

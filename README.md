@@ -24,11 +24,11 @@ const VersioningRouter = require('express-v-router').default;
 const express = require('express');
 const vRouter = new VersioningRouter();
 
-vRouter.use({ name: 'auth', version: '1.0.0' }, (req, res, next) => {
+vRouter.use('/', { name: 'auth', version: '1.0.0' }, (req, res, next) => {
   next();
 });
 
-vRouter.use({ name: 'auth', version: '2.0.5' }, (req, res, next) => {
+vRouter.use('/', { name: 'auth', version: '2.0.5' }, (req, res, next) => {
   next();
 });
 
@@ -80,7 +80,7 @@ app.listen(3000, () => {
 
   ```javascript
   // No!!
-  vRouter.use({ name: 'test', version: '1.0.0' }, (req, res, next) => {});
+  vRouter.use('/', { name: 'test', version: '1.0.0' }, (req, res, next) => {});
   vRouter.add(
     '/test',
     'get',
@@ -89,14 +89,14 @@ app.listen(3000, () => {
   );
 
   // Yes!!
-  vRouter.use({ name: 'test1', version: '1.0.0' }, (req, res, next) => {});
+  vRouter.use('/', { name: 'test1', version: '1.0.0' }, (req, res, next) => {});
   vRouter.add(
     '/test',
     'get',
     { name: 'test1', version: '1.0.1' },
     (req, res, next) => {}
   );
-  vRouter.use({ name: 'test2', version: '1.0.0' }, (req, res, next) => {});
+  vRouter.use('/', { name: 'test2', version: '1.0.0' }, (req, res, next) => {});
   ```
 
 - If you are not registered with that version and are registered with a subversion, use the most recent version of the subversion. And if multiple versions with the same name are registered, use the latest version below that version.
@@ -105,17 +105,17 @@ app.listen(3000, () => {
   const VersioningRouter = require('express-v-router').default;
   const vRouter = new VersioningRouter();
 
-  vRouter.use({ name: 'filter', version: '1.0.0' }, (req, res, next) => {
+  vRouter.use('/', { name: 'filter', version: '1.0.0' }, (req, res, next) => {
     console.log('1.0.0 filter !');
     next();
   });
 
-  vRouter.use({ name: 'filter', version: '2.0.5' }, (req, res, next) => {
+  vRouter.use('/', { name: 'filter', version: '2.0.5' }, (req, res, next) => {
     console.log('2.0.5 filter !');
     next();
   });
 
-  vRouter.useOnly({ name: 'auth', version: '1.0.0' }, (req, res, next) => {
+  vRouter.useOnly('/', { name: 'auth', version: '1.0.0' }, (req, res, next) => {
     console.log('auth !');
     next();
   });
@@ -148,7 +148,6 @@ app.listen(3000, () => {
 
 # API
 
-- `use(options: RoutingOptions, ...handlers: RequestHandler[]): void`
 - `use(routePath: string, options: RoutingOptions, ...handlers: RequestHandler[]): void`
 
   It's like `router.use()` in express. It is a middleware that only works with this version or higher.
@@ -158,6 +157,7 @@ app.listen(3000, () => {
   const vRouter = new VersioningRouter();
 
   vRouter.use(
+    '/',
     { name: 'filter', version: '1.0.0' },
     (req, res, next) => {},
     (req, res, next) => {}
@@ -170,7 +170,6 @@ app.listen(3000, () => {
   );
   ```
 
-- `useOnly(options: RoutingOptions, ...handlers: RequestHandler[]): void`
 - `useOnly(routePath: string, options: RoutingOptions, ...handlers: RequestHandler[]): void`
 
   It's like `router.use()` in express. Unlike use(), it is a middleware that operates only in that version. If the router has the same name, the higher version will work before the lower version.
@@ -180,6 +179,7 @@ app.listen(3000, () => {
   const vRouter = new VersioningRouter();
 
   vRouter.useOnly(
+    '/',
     { name: 'filter', version: '1.0.0' },
     (req, res, next) => {},
     (req, res, next) => {}

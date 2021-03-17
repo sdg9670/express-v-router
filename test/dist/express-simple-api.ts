@@ -12,10 +12,14 @@ const addData = (req: Request, value: string) => {
   else req.body.testData.push(value);
 };
 
-versionRouter.use({ name: 'middle1', version: '1.0.0' }, (req, res, next) => {
-  addData(req, 'middle1 1.0.0');
-  next();
-});
+versionRouter.use(
+  '/',
+  { name: 'middle1', version: '1.0.0' },
+  (req, res, next) => {
+    addData(req, 'middle1 1.0.0');
+    next();
+  }
+);
 
 versionRouter.useOnly(
   '/testget2',
@@ -36,17 +40,26 @@ versionRouter.add(
   }
 );
 
-versionRouter.use({ name: 'middle1', version: '1.0.1' }, (req, res, next) => {
-  addData(req, 'middle1 1.0.1');
-  next();
-});
+versionRouter.use(
+  '/',
+  { name: 'middle1', version: '1.0.1' },
+  (req, res, next) => {
+    addData(req, 'middle1 1.0.1');
+    next();
+  }
+);
 
-versionRouter.use({ name: 'middle2', version: '1.0.1' }, (req, res, next) => {
-  addData(req, 'middle2 1.0.1');
-  next();
-});
+versionRouter.use(
+  '/',
+  { name: 'middle2', version: '1.0.1' },
+  (req, res, next) => {
+    addData(req, 'middle2 1.0.1');
+    next();
+  }
+);
 
 versionRouter.useOnly(
+  '/',
   { name: 'middle3', version: '1.0.1' },
   (req, res, next) => {
     addData(req, 'middle3 1.0.1');

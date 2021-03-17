@@ -80,6 +80,7 @@ describe('VersioningRouter', () => {
     const versionRouter = new VersionRouter();
 
     versionRouter.use(
+      '/',
       { version: '1.0.0', name: 'test1' },
       (req, res, next) => {},
       (req, res, next) => {}
@@ -108,7 +109,7 @@ describe('VersioningRouter', () => {
 
     expect(versionRouter.info()).to.deep.equal({
       '1.0.0': [
-        { path: undefined, name: 'test1' },
+        { path: '/', name: 'test1' },
         { path: '/test2', name: 'test2' },
         { path: '/test3', name: 'test3' },
       ],
@@ -124,6 +125,7 @@ describe('VersioningRouter', () => {
     const versionRouter = new VersionRouter();
 
     versionRouter.useOnly(
+      '/',
       { version: '1.0.0', name: 'test1' },
       (req, res, next) => {},
       (req, res, next) => {}
@@ -152,7 +154,7 @@ describe('VersioningRouter', () => {
 
     expect(versionRouter.info()).to.deep.equal({
       '1.0.0': [
-        { path: undefined, name: 'test1' },
+        { path: '/', name: 'test1' },
         { path: '/test2', name: 'test2' },
         { path: '/test3', name: 'test3' },
       ],

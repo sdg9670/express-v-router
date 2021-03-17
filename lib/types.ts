@@ -12,7 +12,7 @@ export type HttpMethod =
   | 'patch';
 
 export interface Routing {
-  routePath?: string;
+  routePath: string;
   method?: HttpMethod;
   version: string;
   name: string;
